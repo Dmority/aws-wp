@@ -4,8 +4,7 @@ resource "aws_s3_bucket" "logs" {
         rule {
             bucket_key_enabled = true
             apply_server_side_encryption_by_default {
-                kms_master_key_id = "arn:aws:kms:ap-northeast-1:${data.aws_caller_identity.current.account_id}:alias/aws/s3"
-                sse_algorithm     = "aws:kms"
+                sse_algorithm     = "AES256"
             }
         }
     }
@@ -16,8 +15,7 @@ resource "aws_s3_bucket" "contents" {
         rule {
             bucket_key_enabled = true
             apply_server_side_encryption_by_default {
-                kms_master_key_id = "arn:aws:kms:ap-northeast-1:${data.aws_caller_identity.current.account_id}:alias/aws/s3"
-                sse_algorithm     = "aws:kms"
+                sse_algorithm     = "AES256"
             }
         }
     }
